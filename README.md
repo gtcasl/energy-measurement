@@ -7,7 +7,7 @@ Also, allows the user to bundle up blocks of operations of each type.
 
 To compile: g++ benchmark.cpp -o benchmark-I/usr/local/include -L/usr/local/lib -lpapi -std=c++11
 
-To run: sudo ./benchmark <parameter a> <parameter b> <parameter c> <parameter d>
+To run: sudo ./benchmark parameter a parameter b parameter c parameter d
 
 Parameter a is the factor that decides the size of each block
 
