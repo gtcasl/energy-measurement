@@ -29,6 +29,7 @@
 #include <memory.h>
 #include <malloc.h>
 #include <vector>
+#include <omp.h>
 #include "papi.h"
 
 using namespace std;
@@ -204,6 +205,14 @@ int main(int argc, char **argv)
 
     gettimeofday(&start, NULL);
 
+#pragma omp parallel
+{
+    auto num_threads = omp_get_num_threads();
+    auto tid = omp_get_thread_num();
+    if(tid == 0){
+      std::cout << "Starting parallel computation with " << num_threads << " threads\n";
+    }
+#pragma omp for
     for (i=0; i<n; i++)
     {
         srand(time(NULL));
@@ -221,6 +230,7 @@ int main(int argc, char **argv)
             c = M[rand() % y];
         }
     }
+}
 
     gettimeofday(&end, NULL);
 

@@ -5,7 +5,7 @@ Information about measuring energy on platforms and any tools used to change sys
 The benchmark application gives the user control over the number of compute-intensive and memory-bound operations.
 Also, allows the user to bundle up blocks of operations of each type.
 
-To compile: g++ benchmark.cpp -o benchmark-I/usr/local/include -L/usr/local/lib -lpapi -std=c++11
+To compile: g++ benchmark.cpp -o benchmark-I/usr/local/include -L/usr/local/lib -lpapi -std=c++11 -fopenmp
 
 To run: sudo ./benchmark parameter a parameter b parameter c parameter d
 
@@ -21,4 +21,5 @@ PAPI helper functions have been included. The required events can be added in ma
 
 The program gives the counter values of the requested events and the execution time of the program.
 
-The thread has been given an affinity to a single core (Core 0). This needs to be replaced with OpenMP parallelization.
+To vary the number of cores, set OMP_NUM_THREADS environment variable. For example:
+    sudo OMP_NUM_THREADS=8 ./benchmark <params>
